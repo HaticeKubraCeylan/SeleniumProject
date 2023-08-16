@@ -16,7 +16,7 @@ public abstract class TestBase {
     @Before
     public void setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
@@ -24,22 +24,33 @@ public abstract class TestBase {
     @After
     public void tearDown() throws Exception {
         Thread.sleep(2000);
-        driver.close();
+        //driver.close();
     }
 
     //HARD WAIT
-    public void bekle(int saniye){
+    public void bekle(int saniye) {
         try {
-            Thread.sleep(saniye*1000);
+            Thread.sleep(saniye * 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     //Dropdown Select Index
-    public void selectIndex (WebElement ddm, int index){
-        Select select=new Select(ddm);
+    public void selectIndex(WebElement ddm, int index) {
+        Select select = new Select(ddm);
         select.selectByIndex(index);
     }
+
+    public void selectValue(WebElement ddm, String text){
+        Select select=new Select(ddm);
+        select.selectByValue(text);
+    }
+
+    public void selectVisibleText(WebElement ddm, String text) {
+        Select select = new Select(ddm);
+        select.selectByVisibleText(text);
+    }
+
 
 }
