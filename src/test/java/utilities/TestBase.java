@@ -52,5 +52,10 @@ public abstract class TestBase {
         select.selectByVisibleText(text);
     }
 
+    //window handles
+    public void window(int index){
+        driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
+    }
+
 
 }
