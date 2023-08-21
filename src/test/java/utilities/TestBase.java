@@ -24,7 +24,7 @@ public abstract class TestBase {
     @After
     public void tearDown() throws Exception {
         Thread.sleep(2000);
-        //driver.close();
+        //driver.quit();
     }
 
     //HARD WAIT
@@ -57,5 +57,10 @@ public abstract class TestBase {
         driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
     }
 
+
+    //Iframe index
+    public void frameIndex(int index){
+        driver.switchTo().frame(index);
+    }
 
 }
