@@ -36,8 +36,21 @@ public class C01_UploadFile extends TestBase {
         Assert.assertTrue(text.isDisplayed());
 
 
+    }
 
+    @Test
+    public void test() {
 
+        // Test sayfasını aç
+        driver.get("https://www.ilovepdf.com/compress_pdf");
+
+        // Dosya seçme düğmesini bul ve tıkla
+        driver.findElement(By.xpath("//*[.='Select PDF files']")).click();
+
+        // Dosya yüklemek için Robot sınıfını kullan
+        String dosyaYolu = "C:\\Users\\Lenovo\\OneDrive\\Masaüstü\\testng.pdf";
+        bekle(3);
+        uploadFilePath(dosyaYolu);
 
 
 
