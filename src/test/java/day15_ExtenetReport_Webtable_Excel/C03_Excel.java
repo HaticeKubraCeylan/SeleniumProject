@@ -51,4 +51,16 @@ public class C03_Excel extends TestBase {
 
 
     }
+
+
+    @Test
+    public void test02() throws IOException {
+        //***pratik çözüm
+        //1.satır ve 1.sütun bilgilerini yazdıralım
+        FileInputStream fis=new FileInputStream("src/test/java/resources/Capitals.xlsx");
+        Workbook workbook=WorkbookFactory.create(fis);
+        System.out.println(workbook.getSheet("Sheet1").getRow(0).getCell(0));
+
+
+    }
 }
