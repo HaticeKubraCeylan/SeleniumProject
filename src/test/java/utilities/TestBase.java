@@ -7,10 +7,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -145,4 +142,37 @@ public abstract class TestBase {
     }
 
 
+    //JS Click method
+    public void jsclick(WebElement element){
+        try {
+            element.click();
+        } catch (Exception e) {
+            JavascriptExecutor js= (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();",element);
+        }
+    }
+
+    //JS scrollToElement
+    public void jsScroll(WebElement element){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    //JS scrollToEnd
+    public void jsScrollEnd(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+
+    //JS scrollToHome
+    public void jsScrollHome(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+    }
+
+    //JS SendKeys()
+    public void jsSendKeys(WebElement element,String value){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='"+value+"'",element);
+    }
 }
